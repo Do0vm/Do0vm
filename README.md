@@ -20,10 +20,25 @@ Live BTC and ETH spreads between South Africa's two biggest rand exchanges (VALR
 
 `Python` `REST APIs` `zero dependencies`
 
+## ⚙️ Systems: C++ and Rust
+
+### [orderbook-engine](https://github.com/Do0vm/orderbook-engine) · C++20
+A limit order book matching engine like the one at the core of every exchange: price-time priority, limit/IOC/market orders, O(1) cancels.
+- About **10 million orders/sec, ~100 ns median latency** on a GitHub Actions runner
+- Differential-tested against a reference model on 200k random orders; CI on GCC, Clang, MSVC + ASan/UBSan
+
+### [btc-options-greeks](https://github.com/Do0vm/btc-options-greeks) · Rust
+Prices Deribit BTC options with Black-76: Greeks, implied-vol solver, volatility term structure and 25-delta skew.
+- Matches **Deribit's own mark IV within 0.14 vol points** on all 477 out-of-the-money options in a real chain
+- `erfc` written from scratch (Rust's std has none), bracketed Newton solver, clippy-clean
+
+### [sha256-pow](https://github.com/Do0vm/sha256-pow) · C++20
+SHA-256 from scratch, verified on NIST vectors and real Bitcoin blocks, plus a multithreaded midstate miner that **re-mines the genesis block** and finds Satoshi's nonce.
+
 ## 🧰 Toolbox
 
-**Data & markets:** Python, pandas, NumPy, Excel, REST/JSON APIs, descriptive statistics, backtesting, order books & spreads
-**Engineering:** Git, unit testing, CLI tools, JavaScript, PHP, C/C++ (see my raytracer projects)
+**Data & markets:** Python, pandas, NumPy, Excel, REST/JSON APIs, backtesting, order books, options pricing & implied volatility
+**Engineering:** C++20, Rust, CMake, Git, GitHub Actions CI, unit and differential testing, sanitizers, JavaScript, PHP
 **Security & integrity:** CompTIA Security+, SHA-256, audit trails, log analysis
 
 ## 🔭 Working on next
